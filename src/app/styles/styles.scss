@@ -1,0 +1,52 @@
+
+
+@import "null";
+@import "adaptive";
+@import "vars";
+
+.d-none {
+  display: none;
+}
+
+.button {
+  font-family: Roboto;
+  width: 200px;
+  padding: 15px;
+  text-decoration: none;
+  color: white;
+  background: #f498d5;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.hide{
+  height: 0 !important;
+  width: 0 !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow:hidden !important;
+  display: none;
+}
+
+/* Стили для всех скроллбаров на странице */
+::-webkit-scrollbar {
+  width: 4px; /* ширина вертикального скроллбара */
+  height: 4px; /* высота горизонтального скроллбара */
+}
+
+/* Стили для трека скроллбара */
+::-webkit-scrollbar-track {
+  background: $white; /* цвет фона трека */
+}
+
+/* Стили для ползунка скроллбара */
+::-webkit-scrollbar-thumb {
+  border: solid 1px $blue;
+  background: $blue;
+  border-radius: 10px; /* скругление углов ползунка */
+}
+
