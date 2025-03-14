@@ -1,7 +1,16 @@
-export type Post = {
-    id: string
-    name: string
-    description: string
-    'created-at': string
-    'tags': string[]
+export type SearchPost = {
+  id: string
+  name: string
+  description: string
+  'created-at': string
+  tags: string[]
+  preview_id: string
 }
+
+export interface Post extends SearchPost {
+  page_list: string[]
+  created_at: string
+  preview_src: string
+}
+
+export type PostSlice = Post

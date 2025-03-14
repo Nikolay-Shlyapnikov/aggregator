@@ -10,7 +10,7 @@ export const searchSlice = createSlice({
   initialState,
   reducers: {
     setSearch: (state, action: PayloadAction<Partial<SearchSlice>>) => {
-      state = { ...state, ...action.payload }
+      return { ...state, ...action.payload }
     },
   },
 })
