@@ -1,9 +1,10 @@
 import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import { fileURLToPath } from 'url'
 
-// Получаем путь к текущей директории с использованием import.meta.url
-const __dirname = path.dirname(new URL(import.meta.url).pathname)
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 export default {
   mode: 'development',
@@ -39,12 +40,12 @@ export default {
   },
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'static'),
     clean: true,
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'),
+      directory: path.resolve(__dirname, 'static'),
     },
     hot: true,
     port: 3000,
