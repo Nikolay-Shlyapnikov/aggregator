@@ -2,12 +2,13 @@ import React from 'react'
 import { useAppSelector } from '../../../../utils/hooks/reduxHooks'
 import { SearchItem } from './SearchItem'
 import { SearchPost } from '../../../post/store/types'
+import styles from './SearchItem.module.scss'
 
 export const SearchList = () => {
   const posts = useAppSelector((state) => state.search.posts)
 
   return (
-    <div>
+    <div className={styles.searchList}>
       {posts.map(
         ({
           id,

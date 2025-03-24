@@ -7,7 +7,9 @@
 .d-none {
   display: none;
 }
-
+body {
+  background: $lightBlack;
+}
 .button {
   font-family: Roboto;
   width: 200px;
@@ -45,8 +47,8 @@
 
 /* Стили для ползунка скроллбара */
 ::-webkit-scrollbar-thumb {
-  border: solid 1px $blue;
-  background: $blue;
+  border: solid 1px $primary;
+  background: $primary;
   border-radius: 10px; /* скругление углов ползунка */
 }
 
