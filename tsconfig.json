@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-      "outDir": "./dist/",
+      "outDir": "./static/",
       "resolveJsonModule": true,
       "allowSyntheticDefaultImports": true,
       //"noImplicitAny": true,
