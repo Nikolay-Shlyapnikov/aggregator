@@ -1,45 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './AuthForm.module.scss'
-import { fetch } from '../../../utils/request/API'
-import { ADDRESS_URL } from '../../../app/config'
-import { useAppDispatch } from '../../../utils/hooks/reduxHooks'
-import { userSlice } from '../userSlice'
+import { useAppDispatch, useAppSelector } from '../../../utils/hooks/reduxHooks'
+import { authUser } from '../store/reducers/auth'
+import { signup } from '../store/reducers/signup'
+import { acceptCode } from '../store/reducers/acceptCode'
+import { Credentials } from '../store/types'
+import { shallowEqual } from 'react-redux'
+import { ColoredIcon } from '../../../assets/ColoredIcon'
+import CheckMark from '../../../assets/user/checkMark.svg'
 
 export const AuthForm = () => {
+  const { token } = useAppSelector((state) => state.user, shallowEqual)
+
+  const [authForm, setAuthForm] = React.useState<
+    Credentials & { passwordRepeat: string; code: string }
+  >({
+    email: '',
+    password: '',
+    passwordRepeat: '',
+    code: '',
+  })
   const dispatch = useAppDispatch()
-  const [authForm, setAuthForm] = React.useState<{
-    email: string
-    password: string
-  }>({ email: '', password: '' })
+  const [isAuth, setIsAuth] = useState(false)
 
   const handleChangeInput = (
     event: React.ChangeEvent<HTMLInputElement>,
-    key: 'email' | 'password'
+    key: keyof typeof authForm
   ) => {
     setAuthForm({ ...authForm, [key]: event.target.value })
   }
 
   const handleSubmit = () => {
-    fetch(
-      'post',
-      `${ADDRESS_URL}/auth`,
-      {
-        params: { ...authForm },
-      },
-      (response) => {
-        if (response.data) {
-          dispatch(
-            userSlice.actions.setUser({
-              ...response.data,
-              token: response.headers.token,
-            })
-          )
-        } else {
-          console.error(response)
-        }
+    const { passwordRepeat, ...rest } = authForm
+    if (isAuth) {
+      dispatch(authUser(rest))
+    } else {
+      if (passwordRepeat == rest.password) {
+        dispatch(signup(rest))
       }
-    )
+    }
   }
+
+  const handleAcceptCode = () => {
+    dispatch(acceptCode(Number(authForm.code)))
+  }
+
+  const isShowAcceptCode = !isAuth && !!token
 
   return (
     <div className={styles.form}>
@@ -61,9 +67,49 @@ export const AuthForm = () => {
           handleChangeInput(event, 'password')
         }}
       />
+      {!isAuth && (
+        <input
+          className={styles.formField}
+          value={authForm.passwordRepeat}
+          type="password"
+          placeholder="Повторите пароль"
+          onChange={(event) => {
+            handleChangeInput(event, 'passwordRepeat')
+          }}
+        />
+      )}
+      {isShowAcceptCode && (
+        <div className={styles.checkMarkWrapper}>
+          <input
+            className={styles.formField}
+            value={authForm.code}
+            type="text"
+            placeholder="Введите код"
+            onChange={(event) => {
+              handleChangeInput(event, 'code')
+            }}
+          />
+          <button
+            onClick={handleAcceptCode}
+            type="button"
+            className={styles.checkMark}
+          >
+            <ColoredIcon color="#ff4656" icon={CheckMark} />
+          </button>
+        </div>
+      )}
       <button onClick={handleSubmit} className={styles.formButton}>
-        Войти
+        {isAuth ? 'Войти' : 'Зарегистрироваться'}
       </button>
+      <p className={styles.formText}>
+        {isAuth ? 'Еще нет аккаунта? ' : 'Уже есть аккаунт? '}
+        <button
+          onClick={() => setIsAuth((status) => !status)}
+          className={styles.formTextButton}
+        >
+          {isAuth ? 'Зарегистрируйтесь!' : 'Войдите'}
+        </button>
+      </p>
     </div>
   )
 }

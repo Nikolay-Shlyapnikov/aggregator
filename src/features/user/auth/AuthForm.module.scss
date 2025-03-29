@@ -3,7 +3,7 @@
 .form {
   border-radius: 8px;
   background: $shadow_black_15;
-  max-width: 300px;
+  max-width: 325px;
   display: flex;
   padding: 15px;
   flex-direction: column;
@@ -55,6 +55,45 @@
     &::placeholder {
       font-family: Roboto sans-serif;
       font-size: 20px;
+    }
+  }
+
+  &Text {
+    color: $white;
+    font-family: Roboto;
+
+    &Button {
+      background: inherit;
+      color: $primary;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  }
+}
+
+.checkMark {
+  background: inherit;
+  border-radius: 8px;
+  cursor: pointer;
+  svg {
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s;
+
+    &:hover {
+      transition: all 0.3s;
+      transform: scale(1.2);
+    }
+  }
+
+  &Wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    max-width: 250px;
+
+    input {
+      max-width: 210px;
     }
   }
 }

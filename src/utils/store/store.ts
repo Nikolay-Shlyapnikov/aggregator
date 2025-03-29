@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { userSlice } from '../../features/user/userSlice'
+import { userSlice } from '../../features/user/store/userSlice'
 import { searchSlice } from '../../features/search/store/searchSlice'
 import { postSlice } from '../../features/post/store/store'
 
@@ -10,11 +10,10 @@ export const setupStore = () => {
       search: searchSlice.reducer,
       post: postSlice.reducer,
     }),
-    middleware: (getDefaultMiddleware) => [
-      ...getDefaultMiddleware({
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
         serializableCheck: false, // Отключаем проверку на сериализуемость
       }),
-    ],
     devTools: process.env.NODE_ENV !== 'production',
   })
 }
