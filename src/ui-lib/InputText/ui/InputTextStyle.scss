@@ -33,6 +33,9 @@
     transition: all 0.3s ease;
     padding: 3px 3px 0 3px;
     border-radius: 5px;
+    user-select: none; // Запрещаем выделение текста
+    pointer-events: none; // Отключаем события мыши на тексте
+    z-index: 1; // Убеждаемся, что label находится над input
   }
 
   &TitleActive {
