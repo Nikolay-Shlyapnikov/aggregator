@@ -30,6 +30,7 @@ export const authUser = (user: Credentials) => (dispatch: AppDispatch) => {
       }
     },
     () => {
+      localStorage.removeItem('token')
       dispatch(
         userSlice.actions.updateUser({
           token: undefined,
