@@ -44,10 +44,35 @@ export default {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     publicPath: '/',
     path: path.resolve(__dirname, 'static'),
     clean: true,
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        uiLibStyles: {
+          name: 'ui-lib',
+          test: /[\\/]src[\\/]ui-lib[\\/].*\.(scss|css)$/,
+          enforce: true,
+          priority: 20,
+        },
+        mainStyles: {
+          name: 'main',
+          test: /[\\/]src[\\/](?!ui-lib[\\/]).*\.(scss|css)$/,
+          enforce: true,
+          priority: 10,
+        },
+        default: {
+          name: 'main',
+          chunks: 'all',
+          enforce: true,
+          priority: 5,
+        },
+      },
+    },
   },
   devServer: {
     static: {
@@ -71,7 +96,9 @@ export default {
     },
   },
   plugins: [
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       publicPath: '/',
