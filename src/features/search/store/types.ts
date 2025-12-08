@@ -1,5 +1,6 @@
-import {Post} from "../../post/store/types";
+import { Post, SearchListProps } from '../../post/store/types'
 
 export type SearchSlice = {
-    posts: Post[]
+  posts: Post[]
+  filters: SearchListProps
 }

@@ -14,6 +14,7 @@ export const SearchList = () => {
   const posts = useAppSelector((state) => state.search.posts)
   const dispatch = useAppDispatch()
   const token = useAppSelector((state) => state.user.token)
+  const filters = useAppSelector((state) => state.search.filters)
 
   useEffect(() => {
     if (posts.length === 0) {
@@ -21,7 +22,7 @@ export const SearchList = () => {
         'post',
         `${ADDRESS_URL}/search`,
         {
-          params: { limit: 10, offset: 0 },
+          params: { limit: 15, offset: 0, liked: filters.liked },
           headers: {
             token,
           },
@@ -39,7 +40,7 @@ export const SearchList = () => {
         }
       )
     }
-  }, [])
+  }, [filters])
   return (
     <div className={styles.searchList}>
       {posts.map(
@@ -50,6 +51,7 @@ export const SearchList = () => {
           preview_id,
           tags,
           'created-at': createdAt,
+          liked
         }: SearchPost) => {
           return (
             <SearchItem
@@ -60,6 +62,7 @@ export const SearchList = () => {
               description={description}
               preview_id={preview_id}
               tags={tags}
+              liked={liked}
             />
           )
         }

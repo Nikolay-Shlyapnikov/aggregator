@@ -5,6 +5,7 @@ export type SearchPost = {
   'created-at': string
   tags: string[]
   preview_id: string
+  liked: boolean
 }
 
 export interface Post extends SearchPost {
@@ -23,4 +24,8 @@ export type PostSlice = Post & {
   uploadPost: {
     photos: UploadPostPhoto[]
   }
+}
+
+export type SearchListProps = {
+  liked: boolean
 }

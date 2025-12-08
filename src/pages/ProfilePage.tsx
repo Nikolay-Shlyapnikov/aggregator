@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Page } from './Page'
 import { UploadForm } from '../features/user/components/uploadPost/UploadForm'
 import { PhotoList } from '../features/user/components/uploadPost/PhotoList'
@@ -7,12 +7,29 @@ import styles from '../features/user/components/uploadPost/UploadPost.scss'
 import { ProfileHeader } from '../features/user/components/ProfileHeader/ProfileHeader'
 import { ProfileTabSet } from '../features/user/components/ProfileModes/ProfileTabset'
 import clsx from 'clsx'
-import { useAppSelector } from '../utils/hooks/reduxHooks'
+import { useAppDispatch, useAppSelector } from '../utils/hooks/reduxHooks'
 import { PROFILE_MODES } from '../features/user/components/ProfileModes/const'
 import { SearchList } from '../features/search/components/SearchProcess/SearchList'
+import { setSearch } from '../features/search/store/searchSlice'
 
 export const ProfilePage = () => {
   const profileMode = useAppSelector((state) => state.user.profileMode)
+  const dispatch = useAppDispatch()
+
+  console.log(profileMode)
+  useEffect(() => {
+    if (profileMode === PROFILE_MODES.LIKES) {
+      dispatch(
+        setSearch({
+          posts: [],
+          filters: {
+            liked: true,
+          },
+        })
+      )
+    }
+  }, [profileMode, dispatch])
+
   return (
     <Page>
       <div className={clsx(styles.profileWrapper, styles.headerWrapper)}>

@@ -16,11 +16,12 @@ export const SearchItem: React.FC<SearchItemProps> = ({
   description,
   tags,
   preview_id,
+  liked,
 }) => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const handleClickPost = () => {
-    dispatch(postSlice.actions.setPost({ id, name, description, preview_id }))
+    dispatch(postSlice.actions.setPost({ id, name, description, preview_id, liked }))
     navigate(`/post/${id}`)
   }
   return (
