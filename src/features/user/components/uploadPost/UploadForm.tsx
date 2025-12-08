@@ -12,6 +12,7 @@ import {
 } from '../../../../utils/hooks/reduxHooks'
 import { postSlice } from '../../../post/store/store'
 import styles from './UploadPost.scss'
+import { Textarea } from '../../../../ui-lib/TextArea/ui'
 
 export const UploadForm = () => {
   const dispatch = useAppDispatch()
@@ -174,11 +175,21 @@ export const UploadForm = () => {
   return (
     <div className={styles.form}>
       <InputFile
-        classNames={{ label: styles.inputFile }}
+        classNames={{
+          label: styles.inputFileLabel,
+          inputWrapper: styles.inputFile,
+        }}
         onChangeInput={handleFileChange}
         value={files}
       >
-        Перетащите сюда файлы
+        {files?.length ? (
+          <React.Fragment>
+            <p>Выбрано файлов: {files.length}</p>
+            <p>Перетащите сюда файлы, если хотите их змаенить</p>
+          </React.Fragment>
+        ) : (
+          'Перетащите сюда файлы'
+        )}
       </InputFile>
       <InputText
         onChange={(value) => handleInputChange(value, 'name')}
@@ -187,11 +198,14 @@ export const UploadForm = () => {
         value={post.name}
         isDisabled={isLoading}
       />
-      <InputText
+      <Textarea
         onChange={(value) => handleInputChange(value, 'description')}
         placeholder="Введите описание"
+        classNames={{
+          textarea: styles.input,
+          textareaWrapper: styles.inputWrapper,
+        }}
         value={post.description}
-        classNames={{ input: styles.input, inputWrapper: styles.inputWrapper }}
         isDisabled={isLoading}
       />
       {error && <div className={styles.error}>{error}</div>}
@@ -199,8 +213,9 @@ export const UploadForm = () => {
         className={styles.button}
         onClick={handleSubmit}
         isDisabled={isLoading}
+        isLoading={isLoading}
       >
-        {isLoading ? 'Загрузка...' : 'Отправить'}
+        Отправить
       </Button>
     </div>
   )

@@ -1,13 +1,13 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import clsx from 'clsx'
-import styles from './inputText.scss'
+import styles from './textarea.scss'
 import { v4 } from 'uuid'
 
-export type InputFileProps = {
+export type TextareaProps = {
   value?: string
-  /**  текст-подсказка внутри input*/
+  /**  текст-подсказка внутри textarea*/
   placeholder?: string
-  /**  функция по обработке момента изменения значения input, принимает 3 аргумента: текущее значение - value, старое значение -oldValue и name input*/
+  /**  функция по обработке момента изменения значения textarea, принимает 3 аргумента: текущее значение - value, старое значение -oldValue и name textarea*/
   onChange?(value: string, oldValue: string): void
   /** Функция по обработки момента потери фокуса, принимает 2 аргумента: текущее значение - value и старое значение -oldValue*/
   onExit?(value: string, oldValue: string): void
@@ -15,29 +15,26 @@ export type InputFileProps = {
   keyPress?(value: string, oldValue: string, key: string): void
   /** Содержит в себе стили разных состояний элемента*/
   classNames?: {
-    /** Определяет стиль обёртки у input*/
-    inputWrapper?: string
-    /** Определяет стиль текстового поля-описания у input*/
+    /** Определяет стиль обёртки у textarea*/
+    textareaWrapper?: string
+    /** Определяет стиль текстового поля-описания у textarea*/
     title?: string
-    /** Определяет стиль текстового поля-описания у input во время фокуса*/
+    /** Определяет стиль текстового поля-описания у textarea во время фокуса*/
     titleActive?: string
-    /** Определяет общий стиль input*/
-    input?: string
-    /** Определяет стиль и вид пустого input*/
+    /** Определяет общий стиль textarea*/
+    textarea?: string
+    /** Определяет стиль и вид пустого textarea*/
     empty?: string
   }
-  /** Определяет type у input, если true, то type будет password, по умолчанию false (type='text')*/
-  isPassword?: boolean
-  /** Определяет, можно ли вводитиь значение в input*/
+  /** Определяет, можно ли вводитиь значение в textarea*/
   isDisabled?: boolean
 }
 
 const id = v4()
 
-export const InputText: React.FC<InputFileProps> = ({
+export const Textarea: React.FC<TextareaProps> = ({
   value,
   isDisabled,
-  isPassword,
   onExit,
   keyPress,
   onChange,
@@ -60,17 +57,17 @@ export const InputText: React.FC<InputFileProps> = ({
     }
   }, [value])
 
-  const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const changeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) onChange(e.target.value, String(value))
   }
 
-  const keyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const keyDownHandler = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (keyPress) {
       keyPress(e.currentTarget.value, String(value) || '', e.key)
     }
   }
 
-  const onExitHandler = (e: React.FocusEvent<HTMLInputElement, Element>) => {
+  const onExitHandler = (e: React.FocusEvent<HTMLTextAreaElement, Element>) => {
     if (onExit) {
       onExit(e.target.value, String(value) || '')
     }
@@ -85,15 +82,15 @@ export const InputText: React.FC<InputFileProps> = ({
   return (
     <div
       className={clsx(
-        styles.inputWrapper,
+        styles.textareaWrapper,
         !value && styles.empty,
-        classNames?.inputWrapper
+        classNames?.textareaWrapper
       )}
     >
       <label
         className={clsx(
-          styles.inputTitle,
-          isFocused && styles.inputTitleActive,
+          styles.textareaTitle,
+          isFocused && styles.textareaTitleActive,
           classNames?.title,
           isFocused && classNames?.titleActive
         )}
@@ -101,13 +98,12 @@ export const InputText: React.FC<InputFileProps> = ({
       >
         {placeholder}
       </label>
-      <input
-        type={isPassword ? 'password' : 'text'}
+      <textarea
         id={id}
         className={clsx(
-          styles.input,
-          isFocused && styles.inputFocus,
-          classNames?.input
+          styles.textarea,
+          isFocused && styles.textareaFocus,
+          classNames?.textarea
         )}
         value={value ?? ''}
         onKeyDown={(e) => keyDownHandler(e)}

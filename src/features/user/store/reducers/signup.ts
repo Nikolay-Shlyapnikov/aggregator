@@ -13,7 +13,7 @@ export const signup = (user: Credentials) => (dispatch: AppDispatch) =>
     },
     (response) => {
       dispatch(
-        userSlice.actions.setUser({
+        userSlice.actions.updateUser({
           ...response.data,
           token: response.headers.token,
         })

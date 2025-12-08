@@ -13,7 +13,7 @@ export const acceptCode = (code: number) => (dispatch: AppDispatch) => {
     (response) => {
       if (response.status === 200) {
         dispatch(
-          userSlice.actions.setUser({
+          userSlice.actions.updateUser({
             ...response.data,
             token: response.headers.token,
             isConfirmed: true,

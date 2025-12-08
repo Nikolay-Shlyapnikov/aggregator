@@ -1,0 +1,4 @@
+export enum PROFILE_MODES {
+  UPLOAD_POST = 'UPLOAD_POST',
+  LIKES = 'LIKES',
+}

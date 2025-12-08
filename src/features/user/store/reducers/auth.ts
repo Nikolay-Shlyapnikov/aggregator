@@ -15,7 +15,7 @@ export const authUser = (user: Credentials) => (dispatch: AppDispatch) => {
       if (response.data) {
         localStorage.setItem('token', response.headers.token)
         dispatch(
-          userSlice.actions.setUser({
+          userSlice.actions.updateUser({
             ...response.data,
             token: response.headers.token,
           })

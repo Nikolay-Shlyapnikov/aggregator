@@ -9,6 +9,7 @@ export type ImageWithLoaderProps = {
   className?: string
   size?: number
   thickness?: number
+  onErrorIcon?: React.ReactNode
 }
 
 export const ImageWithLoader: React.FC<ImageWithLoaderProps> = ({
@@ -17,8 +18,10 @@ export const ImageWithLoader: React.FC<ImageWithLoaderProps> = ({
   className,
   size,
   thickness,
+  onErrorIcon,
 }) => {
   const [isLoading, setIsLoading] = useState(true)
+  const [isError, setIsError] = useState(false)
   const imgRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
@@ -26,7 +29,10 @@ export const ImageWithLoader: React.FC<ImageWithLoaderProps> = ({
     if (!img) return
 
     const handleLoad = () => setIsLoading(false)
-    const handleError = () => setIsLoading(false)
+    const handleError = () => {
+      setIsLoading(false)
+      setIsError(true)
+    }
 
     // Если изображение уже загружено (из кеша)
     if (img.complete) {
@@ -49,16 +55,22 @@ export const ImageWithLoader: React.FC<ImageWithLoaderProps> = ({
           <Loader size={size} thickness={thickness} />
         </div>
       )}
-
-      <img
-        className={clsx(styles.img, className)}
-        ref={imgRef}
-        src={src}
-        alt={alt}
-        style={{ display: isLoading ? 'none' : 'block' }}
-        onLoad={() => setIsLoading(false)}
-        onError={() => setIsLoading(false)}
-      />
+      {isError ? (
+        onErrorIcon
+      ) : (
+        <img
+          className={clsx(styles.img, className)}
+          ref={imgRef}
+          src={src}
+          alt={alt}
+          style={{ display: isLoading ? 'none' : 'block' }}
+          onLoad={() => setIsLoading(false)}
+          onError={() => {
+            setIsLoading(false)
+            setIsError(true)
+          }}
+        />
+      )}
     </div>
   )
 }

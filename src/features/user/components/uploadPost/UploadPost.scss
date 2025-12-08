@@ -1,5 +1,25 @@
 @import 'src/app/styles/vars';
 
+.profileWrapper {
+  padding: 20px 0 0 0;
+  display: grid;
+  grid-template-columns: 35% 1fr;
+  gap: 20px;
+
+  &Title {
+    font-family: Roboto;
+    font-size: 26px;
+    font-weight: 400;
+    text-align: center;
+    color: $grayscale-dt1;
+    margin: 20px 0;
+  }
+}
+
+.headerWrapper {
+  border-bottom: 1px solid $primary;
+}
+
 .photo {
   max-height: 200px;
   position: relative;
@@ -55,13 +75,6 @@
     object-fit: contain;
     max-height: 200px;
   }
-
-  &Wrapper {
-    display: grid;
-    grid-template-columns: 35% 1fr;
-    gap: 20px;
-    padding: 20px;
-  }
 }
 
 .form {
@@ -79,16 +92,29 @@
 
   &Wrapper {
     width: 100%;
+    max-width: 100%;
+    opacity: 1;
+
   }
 
   &File {
-    width: 300px;
-    height: 200px;
+    max-width: 100%;
+    width: 100%;
+    max-height: initial;
+    height: 150px;
+
+    &Label {
+      font-size: 20px;
+      height: 100%;
+      background: $grayscale-lt1;
+      font-weight: 400;
+    }
   }
 }
 
 .error {
   color: #ff3333;
   margin: 10px 0;
+  font-family: Roboto;
   font-size: 14px;
 }

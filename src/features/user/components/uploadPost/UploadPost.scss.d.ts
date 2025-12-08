@@ -4,15 +4,18 @@ interface CssExports {
   'button': string;
   'error': string;
   'form': string;
+  'headerWrapper': string;
   'input': string;
   'inputFile': string;
+  'inputFileLabel': string;
   'inputWrapper': string;
   'photo': string;
   'photoCross': string;
   'photoList': string;
   'photoName': string;
   'photoNumber': string;
-  'photoWrapper': string;
+  'profileWrapper': string;
+  'profileWrapperTitle': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

@@ -1,0 +1,18 @@
+@import 'src/app/styles/vars';
+
+.profileHeader {
+  .image {
+    &Wrapper {
+      position: relative;
+      top: 12px;
+      margin:  0 0 0 auto;
+      height: 80px;
+      width: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid $primary;
+      border-bottom: 1px solid $grayscale-dt7;
+      background: $grayscale-dt7;
+    }
+  }
+}
