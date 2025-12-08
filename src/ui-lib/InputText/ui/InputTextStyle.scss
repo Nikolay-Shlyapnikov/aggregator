@@ -1,0 +1,54 @@
+@import "src/app/styles/vars";
+
+.input {
+  outline: none;
+  border: none;
+  padding: 5px;
+  background: $grayscale-lt1;
+
+  width: 100%;
+  font-family: Roboto;
+  color: $white;
+
+  &Wrapper {
+    margin: 15px 0 0 0;
+    position: relative;
+    border-radius: 6px;
+    border: 1px solid $primary;
+    max-width: max-content;
+    background: $grayscale-lt1;
+    color: $white;
+    transition: all 0.3s ease;
+    &Focus {
+      transition: all 0.3s ease;
+      border: 1px solid $white;
+    }
+  }
+
+  &Title {
+    cursor: text;
+    display: flex;
+    position: absolute;
+    font-family: Roboto;
+    font-size: 14px;
+    top: 50%;
+    transform: translateY(-50%) scale(1);
+    transition: all 0.3s ease;
+    padding: 3px 3px 0 3px;
+    border-radius: 5px;
+  }
+
+  &TitleActive {
+    top: 0;
+    left: 0;
+    transform: translateY(-85%) scale(0.8);
+  }
+}
+
+.empty {
+  opacity: 0.8;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0 50px #fff;
+}

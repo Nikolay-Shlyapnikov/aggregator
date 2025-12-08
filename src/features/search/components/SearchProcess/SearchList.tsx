@@ -1,12 +1,45 @@
-import React from 'react'
-import { useAppSelector } from '../../../../utils/hooks/reduxHooks'
+import React, { useEffect } from 'react'
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../../utils/hooks/reduxHooks'
 import { SearchItem } from './SearchItem'
-import { SearchPost } from '../../../post/store/types'
+import { Post, SearchPost } from '../../../post/store/types'
 import styles from './SearchItem.module.scss'
+import { fetch } from '../../../../utils/request/API'
+import { ADDRESS_URL } from '../../../../app/config'
+import { searchSlice } from '../../store/searchSlice'
 
 export const SearchList = () => {
   const posts = useAppSelector((state) => state.search.posts)
+  const dispatch = useAppDispatch()
+  const token = useAppSelector((state) => state.user.token)
 
+  useEffect(() => {
+    if (posts.length === 0) {
+      fetch(
+        'post',
+        `${ADDRESS_URL}/search`,
+        {
+          params: { limit: 10, offset: 0 },
+          headers: {
+            token,
+          },
+        },
+        (response) => {
+          if (response.data) {
+            if (response.data && response.data.length > 0) {
+              const posts = response.data as unknown as Post[]
+
+              dispatch(searchSlice.actions.setSearch({ posts }))
+            }
+          } else {
+            console.error(response)
+          }
+        }
+      )
+    }
+  }, [])
   return (
     <div className={styles.searchList}>
       {posts.map(
@@ -14,8 +47,8 @@ export const SearchList = () => {
           id,
           name,
           description,
-          tags,
           preview_id,
+          tags,
           'created-at': createdAt,
         }: SearchPost) => {
           return (
@@ -23,10 +56,10 @@ export const SearchList = () => {
               key={id}
               id={id}
               name={name}
-              description={description}
-              tags={tags}
-              preview_id={preview_id}
               created-at={createdAt}
+              description={description}
+              preview_id={preview_id}
+              tags={tags}
             />
           )
         }

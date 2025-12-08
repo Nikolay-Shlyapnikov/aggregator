@@ -1,7 +1,10 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { fetch } from '../../../utils/request/API'
 import { ADDRESS_URL, PHOTO_URL } from '../../../app/config'
 import { store } from '../../../utils/store/store'
+import { InputFile } from '../../../ui-lib/inputFile'
+import { InputText } from '../../../ui-lib/InputText'
+import { Button } from '../../../ui-lib/Button/inbex'
 
 export const UploadPost = () => {
   const [post, setPost] = useState<{ name: string; description: string }>({
@@ -17,11 +20,8 @@ export const UploadPost = () => {
     }
   }
 
-  const handleInputChange = (
-    event: ChangeEvent<HTMLInputElement>,
-    key: 'name' | 'description'
-  ) => {
-    setPost({ ...post, [key]: event.target.value })
+  const handleInputChange = (value: string, key: 'name' | 'description') => {
+    setPost({ ...post, [key]: value })
   }
 
   const handleSubmit = () => {
@@ -77,24 +77,18 @@ export const UploadPost = () => {
 
   return (
     <React.Fragment>
-      <input
-        type="file"
-        multiple={true}
-        onChange={(event) => {
-          handleFileChange(event.target.files)
-        }}
-      />
-      <input
-        type="text"
-        onChange={(event) => handleInputChange(event, 'name')}
+      <InputFile onChangeInput={handleFileChange} value={files}></InputFile>
+      <InputText
+        onChange={(value) => handleInputChange(value, 'name')}
         placeholder="Введите название"
+        value={post.name}
       />
-      <input
-        type="text"
-        onChange={(event) => handleInputChange(event, 'description')}
+      <InputText
+        onChange={(value) => handleInputChange(value, 'description')}
         placeholder="Введите описание"
+        value={post.description}
       />
-      <button onClick={handleSubmit}>Отправить</button>
+      <Button onClick={handleSubmit}>Отправить</Button>
     </React.Fragment>
   )
 }

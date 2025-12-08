@@ -45,6 +45,7 @@ export default {
   },
   output: {
     filename: 'main.js',
+    publicPath: '/',
     path: path.resolve(__dirname, 'static'),
     clean: true,
   },
@@ -54,7 +55,10 @@ export default {
     },
     hot: true,
     port: 3000,
-    historyApiFallback: true,
+    historyApiFallback: {
+      index: '/index.html',
+      disableDotRule: true,
+    },
     proxy: {
       '/api': {
         target: 'http://localhost:4000',
@@ -70,6 +74,7 @@ export default {
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      publicPath: '/',
     }),
   ],
 }

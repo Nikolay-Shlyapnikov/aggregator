@@ -13,6 +13,7 @@ export const authUser = (user: Credentials) => (dispatch: AppDispatch) => {
     },
     (response) => {
       if (response.data) {
+        localStorage.setItem('token', response.headers.token)
         dispatch(
           userSlice.actions.setUser({
             ...response.data,
@@ -20,8 +21,20 @@ export const authUser = (user: Credentials) => (dispatch: AppDispatch) => {
           })
         )
       } else {
+        dispatch(
+          userSlice.actions.updateUser({
+            token: undefined,
+          })
+        )
         console.error(response)
       }
+    },
+    () => {
+      dispatch(
+        userSlice.actions.updateUser({
+          token: undefined,
+        })
+      )
     }
   )
 }

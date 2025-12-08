@@ -11,6 +11,7 @@ const initialState: PostSlice = {
   'created-at': '',
   tags: ['Научая деятельность'],
   preview_id: '1',
+  isLoading: false,
 }
 
 export const postSlice = createSlice({

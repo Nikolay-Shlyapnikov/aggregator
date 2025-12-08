@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './AuthForm.module.scss'
 import { useAppDispatch, useAppSelector } from '../../../utils/hooks/reduxHooks'
 import { authUser } from '../store/reducers/auth'
@@ -8,9 +8,11 @@ import { Credentials } from '../store/types'
 import { shallowEqual } from 'react-redux'
 import { ColoredIcon } from '../../../assets/ColoredIcon'
 import CheckMark from '../../../assets/user/checkMark.svg'
+import { useNavigate } from 'react-router-dom'
 
 export const AuthForm = () => {
   const { token } = useAppSelector((state) => state.user, shallowEqual)
+  const navigate = useNavigate()
 
   const [authForm, setAuthForm] = React.useState<
     Credentials & { passwordRepeat: string; code: string }
@@ -46,6 +48,12 @@ export const AuthForm = () => {
   }
 
   const isShowAcceptCode = !isAuth && !!token
+
+  useEffect(() => {
+    if (token) {
+      navigate('/profile')
+    }
+  }, [token])
 
   return (
     <div className={styles.form}>

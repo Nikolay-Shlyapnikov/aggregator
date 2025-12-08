@@ -42,7 +42,11 @@ export const Header = () => {
   return (
     <div className={styles.header}>
       <div className={clsx(styles.container, styles.headerWrapper)}>
-        <div className={styles.headerLogo}>X-hub</div>
+        <div className={styles.headerLogo}>
+          <Link className={styles.headerLogo} to={'/'}>
+            X-hub
+          </Link>
+        </div>
         <div className={styles.headerSearchWrapper}>
           <input
             className={styles.headerSearchField}
@@ -53,7 +57,7 @@ export const Header = () => {
             <ColoredIcon icon={SearchIcon} color="#ff4656" />
           </button>
         </div>
-        <Link to={'/login'}>
+        <Link to={token ? '/profile' : '/login'}>
           <ColoredIcon
             icon={UserIcon}
             color="#ff4656"

@@ -2,7 +2,7 @@
 
 .form {
   border-radius: 8px;
-  background: $shadow_black_15;
+  background: $grayscale-lt1;
   max-width: 325px;
   display: flex;
   padding: 15px;
@@ -35,7 +35,7 @@
     border: 1px solid $primary;
     border-radius: 6px;
     padding: 5px 15px;
-    background: $shadow_black_15;
+    background: $grayscale-lt1;
 
     font-family: Roboto;
     font-size: 20px;

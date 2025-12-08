@@ -6,7 +6,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  background: $shadow_black_15;
+  z-index: 2;
+  background: $grayscale-lt1;
   display: flex;
   align-items: center;
 
