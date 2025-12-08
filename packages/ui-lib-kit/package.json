@@ -1,0 +1,66 @@
+{
+  "name": "ui-lib-kit",
+  "version": "1.0.0",
+  "description": "UI Component Library",
+  "main": "./lib/index.js",
+  "style": "./lib/index.css",
+  "types": "./dist-types/index.d.ts",
+  "files": ["lib", "dist-types"],
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.js",
+      "types": "./dist-types/index.d.ts"
+    },
+    "./ImageWithLoader": {
+      "import": "./lib/ImageWithLoader/ImageWithLoader.js",
+      "types": "./dist-types/ImageWithLoader/ImageWithLoader.d.ts"
+    },
+    "./Loader": {
+      "import": "./lib/Loader/Loader.js",
+      "types": "./dist-types/Loader/Loader.d.ts"
+    },
+    "./Tabs": {
+      "import": "./lib/Tabs/Tabs.js",
+      "types": "./dist-types/Tabs/Tabs.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "rimraf lib dist-types && tsc && webpack",
+    "watch": "node ../../node_modules/typescript/bin/tsc -p tsconfig.build.json --watch",
+    "lint": "eslint '**/*.{ts,tsx}'",
+    "clean": "rimraf lib/"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.17",
+    "@mui/lab": "^5.0.0-alpha.170",
+    "@mui/material": "^5.15.17",
+    "clsx": "^2.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/preset-typescript": "^7.27.1",
+    "@svgr/webpack": "^8.1.0",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "autoprefixer": "^10.4.21",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^6.11.0",
+    "css-modules-typescript-loader": "^4.0.1",
+    "less": "^4.3.0",
+    "less-loader": "^12.3.0",
+    "mini-css-extract-plugin": "^2.9.2",
+    "postcss-loader": "^8.1.1",
+    "sass": "^1.68.0",
+    "sass-loader": "^13.3.2",
+    "ts-loader": "^9.4.4",
+    "typescript": "^4.1.3",
+    "webpack": "^5.99.8",
+    "webpack-cli": "^4.10.0"
+  }
+}
