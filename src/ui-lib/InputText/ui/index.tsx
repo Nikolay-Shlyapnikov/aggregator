@@ -42,6 +42,7 @@ export const InputText: React.FC<InputFileProps> = ({
   keyPress,
   onChange,
   placeholder,
+  classNames,
 }) => {
   const [isFocused, setIsFocused] = useState(false)
 
@@ -86,13 +87,15 @@ export const InputText: React.FC<InputFileProps> = ({
       className={clsx(
         styles.inputWrapper,
         !value && styles.empty,
-        isFocused && styles.inputWrapperFocus
+        classNames?.inputWrapper
       )}
     >
       <label
         className={clsx(
           styles.inputTitle,
-          isFocused && styles.inputTitleActive
+          isFocused && styles.inputTitleActive,
+          classNames?.title,
+          isFocused && classNames?.titleActive
         )}
         htmlFor={id}
       >
@@ -101,7 +104,11 @@ export const InputText: React.FC<InputFileProps> = ({
       <input
         type={isPassword ? 'password' : 'text'}
         id={id}
-        className={styles.input}
+        className={clsx(
+          styles.input,
+          isFocused && styles.inputFocus,
+          classNames?.input
+        )}
         value={value ?? ''}
         onKeyDown={(e) => keyDownHandler(e)}
         onChange={(e) => changeHandler(e)}

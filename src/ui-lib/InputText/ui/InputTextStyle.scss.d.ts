@@ -3,10 +3,10 @@
 interface CssExports {
   'empty': string;
   'input': string;
+  'inputFocus': string;
   'inputTitle': string;
   'inputTitleActive': string;
   'inputWrapper': string;
-  'inputWrapperFocus': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

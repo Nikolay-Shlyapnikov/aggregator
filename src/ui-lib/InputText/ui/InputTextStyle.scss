@@ -2,27 +2,24 @@
 
 .input {
   outline: none;
-  border: none;
   padding: 5px;
   background: $grayscale-lt1;
-
+  border: 1px solid $primary;
+  border-radius: 6px;
   width: 100%;
   font-family: Roboto;
   color: $white;
+  &Focus {
+    transition: all 0.3s ease;
+    border: 1px solid $white;
+  }
 
   &Wrapper {
     margin: 15px 0 0 0;
     position: relative;
-    border-radius: 6px;
-    border: 1px solid $primary;
     max-width: max-content;
-    background: $grayscale-lt1;
     color: $white;
     transition: all 0.3s ease;
-    &Focus {
-      transition: all 0.3s ease;
-      border: 1px solid $white;
-    }
   }
 
   &Title {

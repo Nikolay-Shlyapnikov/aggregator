@@ -4,12 +4,14 @@ import styles from '../app/styles/styles.scss'
 import { authUser } from '../features/user/store/reducers/auth'
 import { useAppDispatch } from '../utils/hooks/reduxHooks'
 import { updateUser } from '../features/user/store/userSlice'
+import clsx from 'clsx'
 
 export type PageProps = {
   children?: React.ReactNode | React.ReactNode[]
+  className?: string
 }
 
-export const Page: React.FC<PageProps> = ({ children }) => {
+export const Page: React.FC<PageProps> = ({ children, className }) => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -23,7 +25,7 @@ export const Page: React.FC<PageProps> = ({ children }) => {
   return (
     <React.Fragment>
       <Header />
-      <main className={styles.container}>{children}</main>
+      <main className={clsx(styles.container, className)}>{children}</main>
     </React.Fragment>
   )
 }

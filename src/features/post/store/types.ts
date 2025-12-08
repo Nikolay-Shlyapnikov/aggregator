@@ -14,4 +14,13 @@ export interface Post extends SearchPost {
   isLoading: boolean
 }
 
-export type PostSlice = Post
+export type UploadPostPhoto = {
+  fileName: string
+  fileUrl: string
+}
+
+export type PostSlice = Post & {
+  uploadPost: {
+    photos: UploadPostPhoto[]
+  }
+}

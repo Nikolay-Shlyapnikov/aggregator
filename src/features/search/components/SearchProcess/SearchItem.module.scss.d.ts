@@ -6,6 +6,7 @@ interface CssExports {
   'hide': string;
   'searchItem': string;
   'searchList': string;
+  'searchNoResults': string;
   'searchPreview': string;
 }
 export const cssExports: CssExports;

@@ -12,6 +12,9 @@ const initialState: PostSlice = {
   tags: ['Научая деятельность'],
   preview_id: '1',
   isLoading: false,
+  uploadPost: {
+    photos: [],
+  },
 }
 
 export const postSlice = createSlice({

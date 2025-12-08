@@ -9,7 +9,7 @@ export const authUser = (user: Credentials) => (dispatch: AppDispatch) => {
     'post',
     `${ADDRESS_URL}/auth`,
     {
-      params: { ...user },
+      params: { email: user.email, password: user.password },
     },
     (response) => {
       if (response.data) {

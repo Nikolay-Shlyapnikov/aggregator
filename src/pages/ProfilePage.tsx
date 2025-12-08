@@ -1,11 +1,14 @@
 import React from 'react'
 import { Page } from './Page'
-import { UploadPost } from '../features/user/uploadPost/UploadPost'
+import { UploadForm } from '../features/user/components/uploadPost/UploadForm'
+import { PhotoList } from '../features/user/components/uploadPost/PhotoList'
+import styles from '../features/user/components/uploadPost/UploadPost.scss'
 
 export const ProfilePage = () => {
   return (
-    <Page>
-      <UploadPost />
+    <Page className={styles.photoWrapper}>
+      <UploadForm />
+      <PhotoList />
     </Page>
   )
 }

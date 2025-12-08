@@ -32,7 +32,7 @@ export const InputFile: React.FC<InputFileProps> = ({
         id={'file_' + id}
         multiple={true}
         draggable={true}
-        className={styles.inputFile}
+        className={clsx(styles.inputFile, classNames?.input)}
         onDragStart={(e) => {
           e.preventDefault()
         }}

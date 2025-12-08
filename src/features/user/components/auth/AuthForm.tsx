@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import styles from './AuthForm.module.scss'
-import { useAppDispatch, useAppSelector } from '../../../utils/hooks/reduxHooks'
-import { authUser } from '../store/reducers/auth'
-import { signup } from '../store/reducers/signup'
-import { acceptCode } from '../store/reducers/acceptCode'
-import { Credentials } from '../store/types'
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../../utils/hooks/reduxHooks'
+import { authUser } from '../../store/reducers/auth'
+import { signup } from '../../store/reducers/signup'
+import { acceptCode } from '../../store/reducers/acceptCode'
+import { Credentials } from '../../store/types'
 import { shallowEqual } from 'react-redux'
-import { ColoredIcon } from '../../../assets/ColoredIcon'
-import CheckMark from '../../../assets/user/checkMark.svg'
+import { ColoredIcon } from '../../../../assets/ColoredIcon'
+import CheckMark from '../../../../assets/user/checkMark.svg'
 import { useNavigate } from 'react-router-dom'
 
 export const AuthForm = () => {
