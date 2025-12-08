@@ -5,9 +5,11 @@ import { fetch } from '../../utils/request/API'
 import { ADDRESS_URL } from '../../app/config'
 import { Post } from '../post/store/types'
 import { searchSlice } from '../search/store/searchSlice'
-import clsx from 'clsx'
 import { ColoredIcon } from '../../assets/ColoredIcon'
-import SerachIcon from '../../assets/seach/searchIcon.svg'
+import SearchIcon from '../../assets/header/searchIcon.svg'
+import UserIcon from '../../assets/header/user.svg'
+import { Link } from 'react-router-dom'
+import clsx from 'clsx'
 
 export const Header = () => {
   const dispatch = useAppDispatch()
@@ -39,15 +41,25 @@ export const Header = () => {
 
   return (
     <div className={styles.header}>
-      <div className={clsx(styles.container, styles.headerSearchWrapper)}>
-        <input
-          className={styles.headerSearchField}
-          type="text"
-          placeholder="Поиск"
-        />
-        <button className={styles.headerButton} onClick={handleSearch}>
-          <ColoredIcon icon={SerachIcon} color="#ff4656" />{' '}
-        </button>
+      <div className={clsx(styles.container, styles.headerWrapper)}>
+        <div className={styles.headerLogo}>X-hub</div>
+        <div className={styles.headerSearchWrapper}>
+          <input
+            className={styles.headerSearchField}
+            type="text"
+            placeholder="Поиск"
+          />
+          <button className={styles.headerButton} onClick={handleSearch}>
+            <ColoredIcon icon={SearchIcon} color="#ff4656" />
+          </button>
+        </div>
+        <Link to={'/login'}>
+          <ColoredIcon
+            icon={UserIcon}
+            color="#ff4656"
+            className={styles.headerButton}
+          />
+        </Link>
       </div>
     </div>
   )

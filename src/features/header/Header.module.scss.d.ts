@@ -6,8 +6,10 @@ interface CssExports {
   'd-none': string;
   'header': string;
   'headerButton': string;
+  'headerLogo': string;
   'headerSearchField': string;
   'headerSearchWrapper': string;
+  'headerWrapper': string;
   'hide': string;
 }
 export const cssExports: CssExports;

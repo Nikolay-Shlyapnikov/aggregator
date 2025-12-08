@@ -7,44 +7,60 @@
   left: 0;
   width: 100%;
   background: $shadow_black_15;
+  display: flex;
+  align-items: center;
 
-  &SearchWrapper {
+  &Wrapper {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    justify-content: center;
-    height: 100%;
+    justify-content: space-between;
   }
 
-  &SearchField {
-    border: 1px solid $primary;
-    border-radius: 6px;
-    padding: 5px 15px;
-    background: inherit;
+  &Logo {
+    font-size: 30px;
+    color: $primary;
     font-family: Roboto;
-    font-size: 20px;
-    color: $white;
-    transition: all 0.3s;
-    outline: none;
+  }
 
-    &:focus {
-      border: 1px solid $white;
-      transition: all 0.3s;
+  &Search {
+
+    &Wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+      height: 100%;
     }
 
-    &:active {
+    &Field {
       border: 1px solid $primary;
-    }
-
-    &::placeholder {
+      border-radius: 6px;
+      padding: 5px 15px;
+      background: inherit;
       font-family: Roboto;
       font-size: 20px;
+      color: $white;
+      transition: all 0.3s;
+      outline: none;
+
+      &:focus {
+        border: 1px solid $white;
+        transition: all 0.3s;
+      }
+
+      &:active {
+        border: 1px solid $primary;
+      }
+
+      &::placeholder {
+        font-family: Roboto;
+        font-size: 20px;
+      }
     }
   }
+
 
   &Button {
     background: inherit;
-    border-radius: 6px;
     transition: all 0.3s;
     outline: none;
 

@@ -1,0 +1,60 @@
+@import 'src/app/styles/vars';
+
+.form {
+  border-radius: 8px;
+  background: $shadow_black_15;
+  max-width: 300px;
+  display: flex;
+  padding: 15px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 20px auto;
+
+  &Button {
+    border-radius: 12px;
+    min-width: 100px;
+    color: $white;
+    width: max-content;
+    padding: 10px 16px;
+    border: 1px solid $primary;
+    background: $primary;
+    transition: all 0.3s;
+    font-size: 16px;
+    font-weight: 600;
+
+
+    &:hover {
+      transition: all 0.3s;
+      background: $white;
+      color: $primary;
+    }
+  }
+
+  &Field {
+    border: 1px solid $primary;
+    border-radius: 6px;
+    padding: 5px 15px;
+    background: $shadow_black_15;
+
+    font-family: Roboto;
+    font-size: 20px;
+    color: $white;
+    transition: all 0.3s;
+    outline: none;
+
+    &:focus {
+      border: 1px solid $white;
+      transition: all 0.3s;
+    }
+
+    &:active {
+      border: 1px solid $primary;
+    }
+
+    &::placeholder {
+      font-family: Roboto sans-serif;
+      font-size: 20px;
+    }
+  }
+}
