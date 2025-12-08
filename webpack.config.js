@@ -33,6 +33,11 @@ export default {
         ],
         exclude: /node_modules/,
       },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+        exclude: /node_modules/,
+      },
     ],
   },
   resolve: {
