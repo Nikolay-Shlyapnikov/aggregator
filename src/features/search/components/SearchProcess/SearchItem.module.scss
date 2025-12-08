@@ -1,43 +1,43 @@
-@import "src/app/styles/styles";
+@import 'src/app/styles/styles';
 
 .search {
-  &List {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+	&List {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
 
-  &Item {
-    border: 1px solid $primary;
-    max-width: 200px;
-    padding: 5px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    font-family: Roboto;
-    color: $white;
-    font-size: 16px;
-    svg {
-      margin: 0 auto;
-    }
-  }
+	&Item {
+		border: 1px solid $primary;
+		max-width: 200px;
+		padding: 5px;
+		border-radius: 8px;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		font-family: Roboto;
+		color: $white;
+		font-size: 16px;
+		svg {
+			margin: 0 auto;
+		}
+	}
 
-  &Preview {
-    border-radius: 8px;
-    border: 1px solid $primary;
-    width: 100%;
-    object-fit: cover;
-    display: block;
-    min-height: 150px;
-  }
+	&Preview {
+		border-radius: 8px;
+		border: 1px solid $primary;
+		width: 100%;
+		object-fit: cover;
+		display: block;
+		min-height: 150px;
+	}
 
-  &NoResults {
-    font-family: Roboto;
-    color: $white;
-    font-size: 16px;
-    text-align: center;
-    width: 100%;
-    padding: 20px;
-  }
+	&NoResults {
+		font-family: Roboto;
+		color: $white;
+		font-size: 16px;
+		text-align: center;
+		width: 100%;
+		padding: 20px;
+	}
 }

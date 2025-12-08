@@ -5,37 +5,37 @@ import { AppDispatch } from '../../../../utils/store/store'
 import { Credentials } from '../types'
 
 export const authUser = (user: Credentials) => (dispatch: AppDispatch) => {
-  fetch(
-    'post',
-    `${ADDRESS_URL}/auth`,
-    {
-      params: { email: user.email, password: user.password },
-    },
-    (response) => {
-      if (response.data) {
-        localStorage.setItem('token', response.headers.token)
-        dispatch(
-          userSlice.actions.updateUser({
-            ...response.data,
-            token: response.headers.token,
-          })
-        )
-      } else {
-        dispatch(
-          userSlice.actions.updateUser({
-            token: undefined,
-          })
-        )
-        console.error(response)
-      }
-    },
-    () => {
-      localStorage.removeItem('token')
-      dispatch(
-        userSlice.actions.updateUser({
-          token: undefined,
-        })
-      )
-    }
-  )
+	fetch(
+		'post',
+		`${ADDRESS_URL}/auth`,
+		{
+			params: { email: user.email, password: user.password },
+		},
+		(response) => {
+			if (response.data) {
+				localStorage.setItem('token', response.headers.token)
+				dispatch(
+					userSlice.actions.updateUser({
+						...response.data,
+						token: response.headers.token,
+					}),
+				)
+			} else {
+				dispatch(
+					userSlice.actions.updateUser({
+						token: undefined,
+					}),
+				)
+				console.error(response)
+			}
+		},
+		() => {
+			localStorage.removeItem('token')
+			dispatch(
+				userSlice.actions.updateUser({
+					token: undefined,
+				}),
+			)
+		},
+	)
 }

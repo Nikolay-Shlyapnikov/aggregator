@@ -1,120 +1,119 @@
 @import 'src/app/styles/vars';
 
 .profileWrapper {
-  padding: 20px 0 0 0;
-  display: grid;
-  grid-template-columns: 35% 1fr;
-  gap: 20px;
+	padding: 20px 0 0 0;
+	display: grid;
+	grid-template-columns: 35% 1fr;
+	gap: 20px;
 
-  &Title {
-    font-family: Roboto;
-    font-size: 26px;
-    font-weight: 400;
-    text-align: center;
-    color: $grayscale-dt1;
-    margin: 20px 0;
-  }
+	&Title {
+		font-family: Roboto;
+		font-size: 26px;
+		font-weight: 400;
+		text-align: center;
+		color: $grayscale-dt1;
+		margin: 20px 0;
+	}
 }
 
 .headerWrapper {
-  border-bottom: 1px solid $primary;
+	border-bottom: 1px solid $primary;
 }
 
 .photo {
-  max-height: 200px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 15px;
+	max-height: 200px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 15px;
 
-  &List {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-  }
+	&List {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		align-items: center;
+	}
 
-  &Number {
-    color: $primary;
-    font-size: 40px;
-    font-weight: 300;
-    font-family: Roboto;
+	&Number {
+		color: $primary;
+		font-size: 40px;
+		font-weight: 300;
+		font-family: Roboto;
+	}
 
-  }
+	&Name {
+		color: $grayscale-dt1;
+	}
 
-  &Name {
-    color: $grayscale-dt1;
-  }
+	&Cross {
+		position: relative;
+		height: 50px;
+		width: 50px;
+		cursor: pointer;
 
-  &Cross {
-    position: relative;
-    height: 50px;
-    width: 50px;
-    cursor: pointer;
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			width: 40px;
+			height: 3px;
+			background: $primary;
+			top: 50%;
+			left: 5px;
+		}
 
-    &::before, &::after {
-      content: '';
-      position: absolute;
-      width: 40px;
-      height: 3px;
-      background: $primary;
-      top: 50%;
-      left: 5px;
-    }
+		&::before {
+			transform: rotate(45deg) translateY(-50%);
+		}
 
-    &::before {
-      transform: rotate(45deg) translateY(-50%);
-    }
+		&::after {
+			transform: rotate(-45deg) translateY(-50%);
+		}
+	}
 
-    &::after {
-      transform: rotate(-45deg) translateY(-50%);
-    }
-  }
-
-  img {
-    object-fit: contain;
-    max-height: 200px;
-  }
+	img {
+		object-fit: contain;
+		max-height: 200px;
+	}
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .button {
-  margin: 20px 0 0 0;
+	margin: 20px 0 0 0;
 }
 
 .input {
-  border-radius: 6px;
+	border-radius: 6px;
 
-  &Wrapper {
-    width: 100%;
-    max-width: 100%;
-    opacity: 1;
+	&Wrapper {
+		width: 100%;
+		max-width: 100%;
+		opacity: 1;
+	}
 
-  }
+	&File {
+		max-width: 100%;
+		width: 100%;
+		max-height: initial;
+		height: 150px;
 
-  &File {
-    max-width: 100%;
-    width: 100%;
-    max-height: initial;
-    height: 150px;
-
-    &Label {
-      font-size: 20px;
-      height: 100%;
-      background: $grayscale-lt1;
-      font-weight: 400;
-    }
-  }
+		&Label {
+			font-size: 20px;
+			height: 100%;
+			background: $grayscale-lt1;
+			font-weight: 400;
+		}
+	}
 }
 
 .error {
-  color: #ff3333;
-  margin: 10px 0;
-  font-family: Roboto;
-  font-size: 14px;
+	color: #ff3333;
+	margin: 10px 0;
+	font-family: Roboto;
+	font-size: 14px;
 }

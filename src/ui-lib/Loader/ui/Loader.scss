@@ -1,51 +1,51 @@
-@import "src/app/styles/vars";
+@import 'src/app/styles/vars';
 
 .loader {
-  position: relative;
-  border-radius: 50%;
-  height: var(--size);
-  width: var(--size);
-  animation: rotation 1s infinite linear;
+	position: relative;
+	border-radius: 50%;
+	height: var(--size);
+	width: var(--size);
+	animation: rotation 1s infinite linear;
 
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    box-sizing: border-box;
-    border: var(--trickness) solid $primary;
-    border-radius: 50%;
-    animation: move-line 2s linear infinite;
-  }
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		box-sizing: border-box;
+		border: var(--trickness) solid $primary;
+		border-radius: 50%;
+		animation: move-line 2s linear infinite;
+	}
 }
 
 @keyframes rotation {
-  0% {
-    transform: rotate(0);
-  }
+	0% {
+		transform: rotate(0);
+	}
 
-  100% {
-    transform: rotate(360deg);
-  }
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 @keyframes move-line {
-  0% {
-    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
-  }
+	0% {
+		clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+	}
 
-  25% {
-    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
-  }
+	25% {
+		clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+	}
 
-  50% {
-    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
-  }
+	50% {
+		clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+	}
 
-  75% {
-    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
-  }
+	75% {
+		clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+	}
 
-  100% {
-    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
-  }
+	100% {
+		clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+	}
 }

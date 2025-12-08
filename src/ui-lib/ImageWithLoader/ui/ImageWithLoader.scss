@@ -1,29 +1,29 @@
 .imageContainer {
-  position: relative;
-  min-width: 50px;
-  min-height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+	position: relative;
+	min-width: 50px;
+	min-height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
 }
 
 .loaderWrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 10;
 }
 
 .img {
-  transition: opacity 0.3s ease;
+	transition: opacity 0.3s ease;
 
-  &[style*="display: none"] {
-    opacity: 0;
-  }
+	&[style*='display: none'] {
+		opacity: 0;
+	}
 
-  &[style*="display: block"] {
-    opacity: 1;
-  }
+	&[style*='display: block'] {
+		opacity: 1;
+	}
 }

@@ -1,34 +1,33 @@
-@import "src/app/styles/vars";
+@import 'src/app/styles/vars';
 
 .button {
-  border-radius: 12px;
-  min-width: 100px;
-  color: $grayscale-dt1;
-  width: max-content;
-  padding: 10px 16px;
-  border: 1px solid $primary;
-  background: $primary;
-  transition: all 0.3s;
-  font-size: 16px;
-  font-weight: 600;
+	border-radius: 12px;
+	min-width: 100px;
+	color: $grayscale-dt1;
+	width: max-content;
+	padding: 10px 16px;
+	border: 1px solid $primary;
+	background: $primary;
+	transition: all 0.3s;
+	font-size: 16px;
+	font-weight: 600;
 
-  .loader {
-    margin: auto;
+	.loader {
+		margin: auto;
 
-    &::before {
-      border-color: $grayscale-dt1;
-    }
-  }
+		&::before {
+			border-color: $grayscale-dt1;
+		}
+	}
 
-  &:hover {
-    transition: all 0.3s;
-    background: $grayscale-dt1;
-    color: $primary;
-    .loader {
-      &::before {
-        border-color: $primary;
-      }
-    }
-  }
+	&:hover {
+		transition: all 0.3s;
+		background: $grayscale-dt1;
+		color: $primary;
+		.loader {
+			&::before {
+				border-color: $primary;
+			}
+		}
+	}
 }
-

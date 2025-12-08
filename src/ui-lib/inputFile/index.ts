@@ -1,1 +1,1 @@
-export {InputFile} from "./ui";
+export { InputFile } from './ui'

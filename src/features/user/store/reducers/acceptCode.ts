@@ -4,24 +4,24 @@ import { userSlice } from '../userSlice'
 import { AppDispatch } from '../../../../utils/store/store'
 
 export const acceptCode = (code: number) => (dispatch: AppDispatch) => {
-  fetch(
-    'post',
-    `${ADDRESS_URL}/accept`,
-    {
-      params: { code },
-    },
-    (response) => {
-      if (response.status === 200) {
-        dispatch(
-          userSlice.actions.updateUser({
-            ...response.data,
-            token: response.headers.token,
-            isConfirmed: true,
-          })
-        )
-      } else {
-        console.error(response)
-      }
-    }
-  )
+	fetch(
+		'post',
+		`${ADDRESS_URL}/accept`,
+		{
+			params: { code },
+		},
+		(response) => {
+			if (response.status === 200) {
+				dispatch(
+					userSlice.actions.updateUser({
+						...response.data,
+						token: response.headers.token,
+						isConfirmed: true,
+					}),
+				)
+			} else {
+				console.error(response)
+			}
+		},
+	)
 }

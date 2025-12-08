@@ -6,22 +6,22 @@ import { setSearch } from '../features/search/store/searchSlice'
 import { useAppDispatch } from '../utils/hooks/reduxHooks'
 
 export const MainPage = () => {
-  const dispatch = useAppDispatch()
+	const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    dispatch(
-      setSearch({
-        posts: [],
-        filters: {
-          liked: false,
-        },
-      })
-    )
-  }, [dispatch])
+	useEffect(() => {
+		dispatch(
+			setSearch({
+				posts: [],
+				filters: {
+					liked: false,
+				},
+			}),
+		)
+	}, [dispatch])
 
-  return (
-    <Page>
-      <SearchList />
-    </Page>
-  )
+	return (
+		<Page>
+			<SearchList />
+		</Page>
+	)
 }

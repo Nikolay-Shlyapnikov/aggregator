@@ -11,26 +11,26 @@ import { PostPage } from '../pages/PostPage'
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <MainPage />,
-  },
-  {
-    path: '/login',
-    element: <LoginPage />,
-  },
-  {
-    path: '/profile',
-    element: <ProfilePage />,
-  },
-  {
-    path: '/post/:id',
-    element: <PostPage />,
-  },
+	{
+		path: '/',
+		element: <MainPage />,
+	},
+	{
+		path: '/login',
+		element: <LoginPage />,
+	},
+	{
+		path: '/profile',
+		element: <ProfilePage />,
+	},
+	{
+		path: '/post/:id',
+		element: <PostPage />,
+	},
 ])
 
 root.render(
-  <Provider store={store}>
-    <RouterProvider router={router} />
-  </Provider>
+	<Provider store={store}>
+		<RouterProvider router={router} />
+	</Provider>,
 )

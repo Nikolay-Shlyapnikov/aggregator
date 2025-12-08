@@ -5,15 +5,15 @@ import { ColoredIcon } from '../../../../assets/ColoredIcon'
 import AddPhoto from '../../../../assets/user/addPhoto.svg'
 
 export const ProfileHeader = () => {
-  return (
-    <div className={styles.profileHeader}>
-      <div className={styles.imageWrapper}>
-        <ImageWithLoader
-          src=""
-          alt="картинка"
-          onErrorIcon={<ColoredIcon icon={AddPhoto} color="#ff4656" />}
-        />
-      </div>
-    </div>
-  )
+	return (
+		<div className={styles.profileHeader}>
+			<div className={styles.imageWrapper}>
+				<ImageWithLoader
+					src=''
+					alt='картинка'
+					onErrorIcon={<ColoredIcon icon={AddPhoto} color='#ff4656' />}
+				/>
+			</div>
+		</div>
+	)
 }

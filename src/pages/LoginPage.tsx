@@ -3,9 +3,9 @@ import { Page } from './Page'
 import { AuthForm } from '../features/user/components/auth/AuthForm'
 
 export const LoginPage = () => {
-  return (
-    <Page>
-      <AuthForm />
-    </Page>
-  )
+	return (
+		<Page>
+			<AuthForm />
+		</Page>
+	)
 }

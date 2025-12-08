@@ -1,73 +1,71 @@
-@import "src/app/styles/styles";
+@import 'src/app/styles/styles';
 
 .header {
-  height: 80px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 2;
-  background: $grayscale-lt1;
-  display: flex;
-  align-items: center;
+	height: 80px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 2;
+	background: $grayscale-lt1;
+	display: flex;
+	align-items: center;
 
-  &Wrapper {
-    display: flex;
-    justify-content: space-between;
-  }
+	&Wrapper {
+		display: flex;
+		justify-content: space-between;
+	}
 
-  &Logo {
-    font-size: 30px;
-    color: $primary;
-    font-family: Roboto;
-  }
+	&Logo {
+		font-size: 30px;
+		color: $primary;
+		font-family: Roboto;
+	}
 
-  &Search {
+	&Search {
+		&Wrapper {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			justify-content: center;
+			height: 100%;
+		}
 
-    &Wrapper {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      justify-content: center;
-      height: 100%;
-    }
+		&Field {
+			border: 1px solid $primary;
+			border-radius: 6px;
+			padding: 5px 15px;
+			background: inherit;
+			font-family: Roboto;
+			font-size: 20px;
+			color: $white;
+			transition: all 0.3s;
+			outline: none;
 
-    &Field {
-      border: 1px solid $primary;
-      border-radius: 6px;
-      padding: 5px 15px;
-      background: inherit;
-      font-family: Roboto;
-      font-size: 20px;
-      color: $white;
-      transition: all 0.3s;
-      outline: none;
+			&:focus {
+				border: 1px solid $white;
+				transition: all 0.3s;
+			}
 
-      &:focus {
-        border: 1px solid $white;
-        transition: all 0.3s;
-      }
+			&:active {
+				border: 1px solid $primary;
+			}
 
-      &:active {
-        border: 1px solid $primary;
-      }
+			&::placeholder {
+				font-family: Roboto;
+				font-size: 20px;
+			}
+		}
+	}
 
-      &::placeholder {
-        font-family: Roboto;
-        font-size: 20px;
-      }
-    }
-  }
+	&Button {
+		background: inherit;
+		transition: all 0.3s;
+		outline: none;
 
-
-  &Button {
-    background: inherit;
-    transition: all 0.3s;
-    outline: none;
-
-    &:hover {
-      transition: all 0.3s;
-      transform: scale(1.2);
-    }
-  }
+		&:hover {
+			transition: all 0.3s;
+			transform: scale(1.2);
+		}
+	}
 }

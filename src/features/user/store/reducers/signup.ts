@@ -5,18 +5,18 @@ import { AppDispatch } from '../../../../utils/store/store'
 import { Credentials } from '../types'
 
 export const signup = (user: Credentials) => (dispatch: AppDispatch) =>
-  fetch(
-    'post',
-    `${ADDRESS_URL}/user`,
-    {
-      params: { ...user },
-    },
-    (response) => {
-      dispatch(
-        userSlice.actions.updateUser({
-          ...response.data,
-          token: response.headers.token,
-        })
-      )
-    }
-  )
+	fetch(
+		'post',
+		`${ADDRESS_URL}/user`,
+		{
+			params: { ...user },
+		},
+		(response) => {
+			dispatch(
+				userSlice.actions.updateUser({
+					...response.data,
+					token: response.headers.token,
+				}),
+			)
+		},
+	)
