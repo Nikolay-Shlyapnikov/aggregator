@@ -1,18 +1,3 @@
 {
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS",
-      "strict": false
-    }
-  },
-  "compilerOptions": {
-    "plugins": [
-      {
-        "name": "typescript-strict-plugin",
-        "paths": [
-          "./src"
-        ]
-      }
-    ]
-  }
+  "extends": "packages/configs/tsconfig.json",
 }

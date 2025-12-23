@@ -1,18 +1,18 @@
 {
-  "name": "xhub-front",
+  "name": "agregator",
   "version": "1.0.0",
   "description": "",
   "main": "index.tsx",
   "type": "module",
   "scripts": {
-    "start": "cd packages/main-app && webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production",
-    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
-    "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
-    "build:lib": "lerna run build --scope=ui-lib",
-    "watch:lib": "lerna run watch --scope=ui-lib --parallel",
-    "tsc": "tsc -p ./tsconfig.json --noEmit"
+    "lint": "npm run lint --workspace apps/client",
+    "lint:fix": "npm run lint:fix --workspace apps/client",
+    "format": "npm run format --workspace apps/client",
+    "tsc": "npm run tsc --workspace apps/client",
+    "start": "npm run start --workspace apps/client",
+    "build": "npm run build --workspace apps/client",
+    "build:lib": "lerna run build --scope=ui-lib-kit",
+    "watch:lib": "lerna run watch --scope=ui-lib-kit --parallel"
   },
   "author": "Nikolay",
   "license": "ISC",
@@ -24,6 +24,7 @@
     "@types/react-beautiful-dnd": "^13.1.8",
     "@types/react-dom": "^18.2.7",
     "@types/uuid": "^9.0.8",
+    "autoprefixer": "^10.4.21",
     "css-loader": "^6.8.1",
     "css-modules-typescript-loader": "^4.0.1",
     "eslint": "^8.57.1",
@@ -35,10 +36,12 @@
     "globals": "^16.0.0",
     "html-webpack-plugin": "^5.5.3",
     "http-proxy-middleware": "^3.0.3",
+    "less": "^4.3.0",
+    "less-loader": "^12.3.0",
     "lerna": "^8.2.2",
     "mini-css-extract-plugin": "^2.7.6",
+    "postcss-loader": "^8.1.1",
     "prettier": "^3.5.3",
-    "react-router-dom": "^6.16.0",
     "sass": "^1.68.0",
     "sass-loader": "^13.3.2",
     "ts-loader": "^9.4.4",
@@ -49,21 +52,8 @@
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^4.6.0"
   },
-  "dependencies": {
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "@mui/icons-material": "^5.15.17",
-    "@mui/lab": "^5.0.0-alpha.170",
-    "@mui/material": "^5.15.17",
-    "clsx": "^2.1.1",
-    "react": "^18.2.0",
-    "react-beautiful-dnd": "^13.1.1",
-    "react-dom": "^18.2.0",
-    "react-redux": "^9.2.0",
-    "react-toastify": "^11.0.5",
-    "uuid": "^9.0.1"
-  },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ]
 }
